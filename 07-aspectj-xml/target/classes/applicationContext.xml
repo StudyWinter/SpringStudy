@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--1、声明目标类对象-->
+    <bean id="someService" class="org.example.service.someServiceImpl"/>
+
+    <!--2、声明作为切面类对象-->
+    <bean id="logAspect" class="org.example.aspect.LogAspect"/>
+
+    <!--3、配置AOP-->
+    <aop:config>
+        <!--AOP的配置有两个重要内容，切面执行的位置、切面执行的时间-->
+        <!--1、声明切入点表达式
+            id:自定义的切入点名称，表示这个切入点表达式；
+            expression：表示切入点表达式
+        -->
+        <aop:pointcut id="somePt" expression="execution(* *..someServiceImpl.doSome(..))"/>
+
+        <!--2、声明切面
+                ref:指定作为切面使用的对象名称
+        -->
+        <aop:aspect ref="logAspect">
+            <!--配置通知
+                    aop:before:表示通知的类型，同注解的作用
+                    method:表示切面类中，增强功能的方法名称
+                    pointcut-ref:指定切入点表达式的id
+            -->
+            <aop:before method="recordLog" pointcut-ref="somePt"/>
+
+        </aop:aspect>
+    </aop:config>
+
+
+
+</beans>

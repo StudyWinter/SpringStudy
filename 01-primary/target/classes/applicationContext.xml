@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean id="someService" class="org.example.SomeServiceImpl"/>
+<!--    <bean id="someService1" class="org.example.SomeServiceImpl"/>-->
+
+
+    <!--
+声明java对象交给Spring创建和管理
+class:类的全限定名称，不是接口（Spring是反射机制创建对象）
+id:自定义的对象的名称，要求是唯一的，表示在Spring中创建对象
+   通过这个名称，可以在Spring找到对象、创建对象
+
+    <bean>等同与于
+    SomeService someService = new SomeServiceImpl
+
+    对象是放到Spring的容器 （Map<id,对象>）
+
+-->
+
+
+
+<!--Bean对象的作用域：作用域是对象的存在范围和可见性。
+    1、单例：singleton,默认的，表示叫这个名称的对象在Spring容器中只有一个
+    指定单例的语法：
+        <bean id="xx" class="yy" scope="singleton"/ >
+
+    2、原型：prototype ，表示每一次使用getBean()都创建一个新的对象
+    语法：
+        <bean id="xx" class="yy" scope="prototype" />
+
+
+-->
+
+<!--指定单例对象-->
+    <bean id="service1" class="org.example.SomeServiceImpl" scope="singleton"/>
+
+
+<!--指定原型对象-->
+    <bean id="service2" class="org.example.SomeServiceImpl" scope="prototype" />
+
+
+</beans>
+
+<!--
+xsd：约束文件的扩展名，xsd的约束功能性强，验证比价全面
+
+文件的url，是唯一的。
+http://www.springframework.org/schema/beans/spring-beans.xsd
+
+约束文件的命名空间（约束文件的简短表示）
+http://www.springframework.org/schema/beans
+
+bean代表的是java对象，Spring把所有的java对象称为bean
+
+
+
+-->

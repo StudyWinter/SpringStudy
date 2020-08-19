@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--声明Student对象-->
+<!--
+    di:依赖注入，就是给属性赋值
+    di:实现有两种，1、使用xml中的标签和属性；2、使用注解
+    di的分类：
+        1、设值输入：就是Spring调用类的set方法，完成赋值，是最常用的方法；
+        2、构造输入：Spring调用类的有参数的构造方法，完成属性的赋值。
+
+
+        【2】构造注入:Spring调用类的有参数的构造方法，在创建对象的同时，给属性赋值
+        使用的标签：  <constructor-arg>
+        <constructor-arg>表示构造方法的一个参数。
+        属性：
+            1、name:表示构造方法的形参名；
+            2、index：表示构造方法的参数位置，从何0开始；
+            3、value：表示简单类型的参数值；
+            4、ref:引用类型的参数值。
+-->
+
+    <!--构造注入：使用name属性-->
+    <bean id="myStudent" class="org.example.ba03.Student">
+        <constructor-arg name="myName" value="张三"/>        <!--myName是有参构造函数的形参名，和属性无关-->
+        <constructor-arg name="myAge" value="20"/>
+        <constructor-arg name="mySchool" ref="myXuexiao"/>
+    </bean>
+
+
+    <!--使用index属性-->
+    <bean id="myStudent2" class="org.example.ba03.Student">
+        <constructor-arg index="0" value="李四"/>       <!--index="0"表示构造函数中的第0个参数-->
+        <constructor-arg index="1" value="23"/>
+        <constructor-arg index="2" ref="myXuexiao"/>
+    </bean>
+
+    <!--省略index-->
+    <bean id="myStudent3" class="org.example.ba03.Student">
+        <constructor-arg  value="王五"/>      <!--删掉index 默认是0、1、2...-->
+        <constructor-arg  value="24"/>
+        <constructor-arg  ref="myXuexiao"/>
+
+
+    </bean>
+    <!--声明School对象-->
+    <bean id="myXuexiao" class="org.example.ba03.School">
+        <property name="name" value="西安科技大学"/>
+        <property name="address" value="西安市"/>
+    </bean>
+
+<!-- 创建非自定义类型的对象   -->
+    <!--java.util.Date-->
+    <bean id="mtDate" class="java.util.Date"/>
+
+
+
+</beans>
+

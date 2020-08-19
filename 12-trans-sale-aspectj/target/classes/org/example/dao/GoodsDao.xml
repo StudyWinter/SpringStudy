@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//http://mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!--接口的全路径名称-->
+<mapper namespace="org.example.dao.GoodsDao">
+    <!--查询操作-->
+    <select id="selectGoodsById" resultType="Goods">
+        select id,name,amount,price from goods where id=#{id}
+    </select>
+
+    <!--更新操作-->
+    <update id="updateGoods">
+        update goods set amount = amount - #{amount} where id =#{id}
+    </update>
+    
+    
+
+</mapper>

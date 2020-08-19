@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--声明School对象-->       <!--ByType自动注入，这里School和Student类中的School的类型一样，符合同源关系的第一种，就可以完成自动注入-->
+    <bean id="mySchool" class="org.example.ba06.School">
+        <property name="name" value="西安科技大学"/>
+        <property name="address" value="西安市"/>
+    </bean>
+
+
+</beans>
+

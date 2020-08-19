@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--
+声明java对象交给Spring创建和管理
+class:类的全限定名称，不是接口（Spring是反射机制创建对象）
+id:自定义的对象的名称，要求是唯一的，表示在Spring中创建对象
+   通过这个名称，可以在Spring找到对象、创建对象
+
+-->
+
+    <bean id="someService01" class="SomeServiceImpl"/>
+
+
+</beans>
+
+<!--
+xsd：约束文件的扩展名，xsd的约束功能性强，验证比价全面
+
+文件的url，是唯一的。
+http://www.springframework.org/schema/beans/spring-beans.xsd
+
+约束文件的命名空间（约束文件的简短表示）
+http://www.springframework.org/schema/beans
+
+bean代表的是java对象，Spring把所有的java对象称为bean
+
+
+
+-->

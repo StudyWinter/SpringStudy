@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+        <!--声明项目中要使用的对象-->
+    <bean id="myUser" class="org.example.beans.User">
+        <property name="name" value="张三"/>
+        <property name="age" value="20"/>
+     </bean>
+
+    <bean id="mySQLDao" class="org.example.dao.UserDaoMySQLImpl"/>
+
+    <bean id="myUserService" class="org.example.service.UserServiceImpl">
+        <property name="userDao" ref="mySQLDao"/>
+
+
+    </bean>
+
+
+</beans>

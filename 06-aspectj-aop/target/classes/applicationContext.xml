@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--1、声明目标类对象-->
+    <bean id="someServiceTarget" class="org.example.service.someServiceImpl"/>
+
+    <bean id="orderServiceTarget" class="org.example.service.orderServiceImpl"/>
+
+    <!--2、声明切面类对象-->
+    <bean id="myAspect" class="org.example.aspect.myAspect"/>
+
+    <!--3、声明自动代理生成器：使用aspectj把spring容器中目标类对象生成代理
+    proxy-target-class="true"表示使用的是cglib动态代理
+
+    目标类有接口，默认使用jdk动态代理，
+    目标类没有接口，默认使用cglib动态代理；
+    目标类有接口，也可以使用cglib动态代理，需要设置
+     <aop:aspectj-autoproxy proxy-target-class="true"/>
+    -->
+    <aop:aspectj-autoproxy />
+
+</beans>

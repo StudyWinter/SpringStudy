@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--
+    引用类型的自动注入：Spring按照某种规则给引用类型完成赋值，常用 ByName 和 ByType
+        1、ByName:按名称注入，实现方式：java类中引用类型的属性名和Spring容器（XML配置文件）
+            <bean>的id值是一样的，且数据类型也是一样的。这样的bean能够赋值给引用类型。
+            指定ByName:
+            <bean id="xx" class="yy" autowire=""ByName>
+                简单类型的赋值
+            </bean>
+
+
+-->
+
+    <!--引用类型的ByName自动注入-->
+    <bean id="myStudent" class="org.example.ba04.Student" autowire="byName">  <!--Student中School类型的名字和这里id一样-->
+        <property name="name" value="李四"/>
+        <property name="age" value="20"/>
+        <!--引用类型-->
+        <property name="school" ref="school"/>
+
+    </bean>
+
+
+
+    <!--声明School对象-->       <!--ByName自动注入，这里School的id和Student类中的School名字一样，就可以完成自动注入-->
+    <bean id="school" class="org.example.ba04.School">
+        <property name="name" value="西安科技大学"/>
+        <property name="address" value="西安市"/>
+    </bean>
+
+
+</beans>
+
